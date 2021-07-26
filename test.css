@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    height: 100vh;
+    width: 100;
+    background-image: linear-gradient(to right, rgba(49, 132, 226, 0.952), pink);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.login-form{
+    background-color: white;
+    width: 25%;
+    height:80%;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+.login-name, .login-password{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+}
+input{
+    border: none;
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin-top: 0;
+}
+.forg-pass{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.lg-but{
+    display: flex;
+    justify-content: center;
+}
+button{
+    border-radius: 40px;
+    width:60%;
+    background-image: linear-gradient(to right, rgba(49, 132, 226, 0.952), pink);
+    padding: 10px;
+    font-size: medium;
+}
+@media screen  and (max-width:600px) {
+    .login-form{
+        width: 50%;
+    }
+}

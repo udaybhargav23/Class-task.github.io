@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="work.css">
+</head>
+<body>
+    <div id="whole">
+        <div style="background-color: burlywood; text-align: center; padding:5px;">
+            <h3>Responsive website</h3>
+            <a id="mainA" href="work2.html">Click Me</a>
+        </div>
+        <div class="header">
+            <h1>Survey Form</h1>
+        </div>
+        <div class="row">
+            <div class="sec">
+                Side bar
+            </div>
+            <div class="main">
+                <form id="frm" axtion="work3.html" method="GET">
+                    Username <br>
+                    <input type = "text" id="f" name="fname">
+                    <p id="demo"></p><br>
+                    Password <br>
+                    <input type = "password" id="l"><br>
+                    <input type="checkbox" onclick="myFunction()">Show Password
+                    <p id="demo2"></p><br>
+                    <button type="button" onclick="validateForm()">Submit</button> &nbsp;
+                    <button type="button" onclick="resetForm()">Reset</button>
+                    <p id="demo3"></p>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        function resetForm(){
+            location.replace("work2.html");
+        }
+        function myFunction() {
+            var x = document.getElementById("l");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function validateForm(){
+            var txt = document.forms["frm"]["f"].value;
+            var res = "";
+            if (txt.indexOf("@")==-1){
+                res = "Input Invalid";
+                document.getElementById("demo").innerHTML = res;
+                document.getElementById("demo").style.color="red";
+            }else{
+                res = "Input Valid";
+                document.getElementById("demo").innerHTML = res;
+                document.getElementById("demo").style.color="green";
+            }
+            if (res=="Input Valid"){
+                var txt2 = document.forms["frm"]["l"].value;
+                var upperCase = 0;
+                var lowerCase = 0;
+                var number = 0;
+                var length = txt2.length;
+                var specialChar = 0;
+                var i = 0;
+                if (length<8){
+                    res = "Input Invalid";
+                    document.getElementById("demo2").innerHTML = res;
+                    document.getElementById("demo2").style.color="red";
+                }
+                for (i=0;i<length;i++){
+                    var n = txt2.charCodeAt(i);
+                    console.log(n);
+                    if (n>=65 && n<=90){
+                        upperCase++;
+                    }else if(n>=97 && n<=122){
+                        lowerCase++;
+                    }else if(n>=48 && n<=57){
+                        number++;
+                    }else if((n>=32 && n<=47) || (n>=58 && n<=64) || (n>=91 && n<=96) || (n>=123 && n<=126)){
+                        specialChar++;
+                    }
+                }
+                if (number==0 || lowerCase==0 || upperCase==0 || specialChar==0){
+                    res = "Input Invalid";
+                    document.getElementById("demo2").innerHTML = res;
+                    document.getElementById("demo2").style.color="red";
+                }else{
+                    var finalres = document.forms["frm"]["f"].value;
+                    finalres = finalres.replace('@','');
+                    //localStorage.setItem("txtValue", finalres);
+                    document.getElementById("whole").innerHTML='Hi ' +finalres;
+                    //location.replace("work3.html");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

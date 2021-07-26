@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href="quiz.css">
+</head>
+<body>
+    <div style="background-color: burlywood; text-align: center; padding:5px;">
+        <a href="quiz2.html"><h3 style="display: inline-block;">Quiz</h3></a>
+    </div>
+        <h2>1. what is 5+2?</h2>
+        <div id="option1">
+            <input type="radio" name="que1" class="option1st" onclick="noc()">
+            <label>5</label><br>
+            <input type="radio" name="que1" class="option1st" onclick="noc()">
+            <label>6</label><br>
+            <input type="radio" name="que1" class="option1st" onclick="inc()">
+            <label>7</label><br>
+            <input type="radio" name="que1" class="option1st" onclick="noc()">
+            <label>8</label><br>
+        </div>
+        <p id="demo1"></p>
+        <h2>2. what is 6+2?</h2>
+        <div id="option2">
+            <input type="radio" name="que2" class="option2nd" onclick="noc2()">
+            <label>5</label><br>
+            <input type="radio" name="que2" class="option2nd" onclick="noc2()">
+            <label>6</label><br>
+            <input type="radio" name="que2" class="option2nd" onclick="noc2()">
+            <label>7</label><br>
+            <input type="radio" name="que2" class="option2nd" onclick="inc2()">
+            <label>8</label><br>
+        </div>
+        <p id="demo2"></p>
+        <button type="button" onclick="validate()">Submit</button>
+        <p id="demo"></p>
+    <script>
+        function validate(){
+            var x = document.getElementById("demo1").innerHTML;
+            var y = document.getElementById("demo2").innerHTML;
+            var count = 0;
+            var wrong = 0;
+            if (x=="valid"){
+                count +=1;
+            }
+            if (y=="valid"){
+                count += 1;
+            }
+            if (x=="Invalid"){
+                wrong +=1;
+            }
+            if (y=="Invalid"){
+                wrong+=1;
+            }
+            var z = 2-parseInt(count)-parseInt(wrong);
+            document.getElementById("demo").innerHTML = "correct answers are: "+count+" and wrong answers are: "+wrong+" and unattempted are: "+z;
+        }
+        function noc(){
+            document.getElementById("demo1").innerHTML = "Invalid";
+            document.getElementById("demo1").style.color = "red";
+            document.getElementsByName("que1").disabled = true;
+        }
+        function noc2(){
+            document.getElementById("demo2").innerHTML = "Invalid";
+            document.getElementById("demo2").style.color = "red";
+            document.getElementByclass("option2nd").disabled = true;
+        }
+        function inc(){
+            document.getElementById("demo1").innerHTML = "valid";
+            document.getElementById("demo1").style.color = "green";
+            document.getElementByclass("option1st").disabled = true;
+        }
+        function inc2(){
+            document.getElementById("demo2").innerHTML = "valid";
+            document.getElementById("demo2").style.color = "green";
+            document.getElementByclass("option2nd").disabled = true;
+        }
+    </script>
+</body>
+</html>
